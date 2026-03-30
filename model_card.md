@@ -3,7 +3,9 @@
 ## 1. Model Name  
 
 Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+Example: **VibeFinder 1.0** 
+
+Mood Matcher
 
 ---
 
@@ -16,6 +18,8 @@ Prompts:
 - What kind of recommendations does it generate  
 - What assumptions does it make about the user  
 - Is this for real users or classroom exploration  
+
+This recommender is meant to find and suggest songs similar to a users taste, anything they would probably like.
 
 ---
 
@@ -32,6 +36,8 @@ Prompts:
 
 Avoid code here. Pretend you are explaining the idea to a friend who does not program.
 
+The system first creates a user profile based on a user's likes and dislikes. From the data set of songs, it gives each song a score based on the user's profile, and compiles them in a list sorted by that score. The top songs in that list are then recommended to the user.
+
 ---
 
 ## 4. Data  
@@ -45,6 +51,8 @@ Prompts:
 - Did you add or remove data  
 - Are there parts of musical taste missing in the dataset  
 
+We're using a fairly small dataset with 21 songs, however there's a wide variety in all categories listed.
+
 ---
 
 ## 5. Strengths  
@@ -56,6 +64,8 @@ Prompts:
 - User types for which it gives reasonable results  
 - Any patterns you think your scoring captures correctly  
 - Cases where the recommendations matched your intuition  
+
+The system works very well at finding songs that are extremely close to the vibe of the user profile, including artists, genre, and mood.
 
 ---
 
@@ -69,6 +79,8 @@ Prompts:
 - Genres or moods that are underrepresented  
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
+
+The scoring system heavily favors songs with exact matches for the genre, mood, and artists to the user profiles. This happens because these categories are the most valuable in the scoring system, and also look for exact matches rather than similar matches. If a user's profile is limited, then many of the suggestions will be repeated and all have the same genres/moods instead of including a true variety that the user might like. 
 
 ---
 
@@ -84,6 +96,8 @@ Prompts:
 - Any simple tests or comparisons you ran  
 
 No need for numeric metrics unless you created some.
+
+The only surprising results were from the third profile that liked every genre and mood. This edge case profile shows how the system can be tricked if the user either likes or dislikes everything, giving every song a super high/low score that isn't accurate to the recommendation. In reality, this profile would technically be accurate if someone really did like/dislike everything.
 
 ---
 

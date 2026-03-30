@@ -48,7 +48,20 @@ As for the flow of the system, the flow will be fairly linear. First, the user p
 A list will be compiled from the dataset sorted in high-to-low order by score, and the top k songs will be recommended to the user based on a threshold set for the score (songs over the score are pushed, songs under aren't).
 With how the scoring system is, the system may over-prioritize the genre, especially because of the scoring method looking for exact matches rather than similar genres. Artist may also hold too much value, potentially repeating too many songs from the same artists if the user is looking for new artists.
 
-![alt text](image.png)
+# Screenshots
+
+## First Example Output
+![alt text](first.png)
+
+## Unique #1 (hiphop and r&b)
+![alt text](second.png)
+
+## Unique #2 (pop and edm listener)
+![alt text](third.png)
+
+## Unique #3 (edge case, likes everything)
+![alt text](fourth.png)
+
 ---
 
 ## Getting Started

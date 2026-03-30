@@ -185,11 +185,6 @@ def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tup
         score, explanation = score_song(user_prefs, song)
         results.append((song, score, explanation))
 
-    # Print all songs and their scores
-    print("\nAll songs and their scores:")
-    for song, score, _ in results:
-        print(f"{song['title']}: {score:.2f}")
-
     # Sort results by score descending
     # sorted() returns a new sorted list, leaving the original unchanged.
     # .sort() sorts a list in place and returns None.
