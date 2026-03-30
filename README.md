@@ -29,6 +29,26 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+Each song in my system will use all the existing features in the data set except for title (Artist, Genre, Mood, Energy, Tempo, Valence, Danceability, Acousticness).
+The UserProfile will store what the user likes, consisting of their favorite artists, favorite genres and moods, and specific target values for energy, tempo, valence, danceability, and acousticness.
+The recommender will give each song a score based on how well it aligns with the user's preferences. Each feature of a song will hold a different priority, with features like artist and genre being the most important (contributing most to the score) while acousticness and danceability may be lower.
+Songs will be sorted from high to low based on their recommender score for each user, with the top songs in the list being the ones pushed to the user.
+
+As for the flow of the system, the flow will be fairly linear. First, the user profile will be processed to read the preferences that will be used for the recommendation. Songs from the dataset will then be loaded. The system will go through each song and assign it a score based on the user preferences, with different features holding different weights:
+| Feature        | Points (max) | Penalty (if disliked) | Scoring Method           |
+|----------------|--------------|-----------------------|--------------------------|
+| Genre          | 3            | -2                    | Exact match              |
+| Mood           | 2            | -1                    | Exact match              |
+| Artist         | 2            | 0                     | Exact match              |
+| Energy         | 2            | 0                     | Similarity to target     |
+| Tempo          | 2            | 0                     | Similarity to target     |
+| Valence        | 1            | 0                     | Similarity to target     |
+| Danceability   | 1            | 0                     | Similarity to target     |
+| Acousticness   | 1            | 0                     | Similarity to target     |
+A list will be compiled from the dataset sorted in high-to-low order by score, and the top k songs will be recommended to the user based on a threshold set for the score (songs over the score are pushed, songs under aren't).
+With how the scoring system is, the system may over-prioritize the genre, especially because of the scoring method looking for exact matches rather than similar genres. Artist may also hold too much value, potentially repeating too many songs from the same artists if the user is looking for new artists.
+
+![alt text](image.png)
 ---
 
 ## Getting Started
